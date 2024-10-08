@@ -1,0 +1,35 @@
+/* @font-face {
+    font-family: Sofia;
+    src: url('fonts/Sofia-Regular.ttf');
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+
+
+.font {
+font-size: 20px;
+    font-weight: 200;
+    /* font-style: italic; */
+    font-family: Sofia;
+}
+
+.space{
+    margin-top: 100px;
+}
+
+.text {
+    color: deepskyblue;
+    /* text-decoration: overline; */
+    line-height: 2;
+    word-spacing: 4px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px black;
+}
+
+.text h2 {
+    text-align: center;
+}
+
+.text a{
+    text-decoration: none;
+}

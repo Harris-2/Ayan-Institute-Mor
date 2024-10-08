@@ -1,0 +1,204 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #081b29;
+    color: aliceblue;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.logo:hover{
+    color: deepskyblue;
+}
+
+.navbar a{
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .5s;
+}
+
+
+.navbar a:hover,
+.navbar a.active{
+    color: deepskyblue;
+}
+
+.navbar a.active:hover{
+    color: white;
+}
+
+.home{
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    background-image: url('images/clint-patterson-dYEuFB8KQJk-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+}
+
+.home-content{
+    max-width: 600px;
+}
+
+.home-content h1{
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.home-content h1:hover{
+    color: deepskyblue;
+    cursor: pointer;
+}
+
+.home-content h3{
+    font-size: 32px;
+    font-weight: 700;
+    color: deepskyblue;
+}
+
+.home-content h3:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.home-content p{
+    font-size: 16px;
+    margin: 20px 0 40px;
+
+}
+
+.btn-box{
+    width: 345px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.btn-box a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+    background: deepskyblue;
+    border: 2px solid deepskyblue;
+    border-radius: 8px;
+    font-size: 19px;
+    text-decoration: none;
+    color: #081b29;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.btn-box a:hover{
+    color: deepskyblue;
+}
+
+.btn-box a:nth-child(2){
+    background: transparent;
+    color: deepskyblue;
+}
+
+.btn-box a:nth-child(2):hover{
+    color: #081b29;
+}
+
+.btn-box a:nth-child(2)::before{
+    background: deepskyblue;
+}
+
+.btn-box a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #081b29;
+    transition: .5s;
+    z-index: -1;
+}
+
+.btn-box a:hover::before{
+    width: 100%;
+}
+
+.home-links{
+    position: absolute;
+    bottom: 40px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-links a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid deepskyblue;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 20px;
+    color: deepskyblue;
+    z-index: 1;
+    transition: .5s;
+    overflow: hidden;
+}
+
+.home-links a:hover{
+    color: #081b29;
+}
+
+.home-links a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: deepskyblue;
+    z-index: -1;
+    transition: .5s;
+}
+
+.home-links a:hover::before{
+    width: 100%;
+}

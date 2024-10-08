@@ -1,0 +1,15 @@
+.bg{
+    border: 2px solid black;
+    background-color: greenyellow;
+    background-image: url('images/header.png');
+    background-size: 50% 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-bottom: 600px;
+}
+
+body {
+    background-color: aquamarine;
+    margin-bottom: 400px;
+}
