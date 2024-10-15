@@ -1,0 +1,195 @@
+@property --progress {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+  
+  @property --linear-progress {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+  
+  @property --empty {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: -30deg;
+  }
+  
+  @property --fix-end-multiplier {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+  
+  :root {
+    --size: 60deg;
+    --fix-end: 0deg;
+    --unloaded: hsl(236, 23%, 12%);
+    --fill: radial-gradient(transparent, transparent);
+  }
+  
+  .spinner::after {
+    --empty: calc(var(--progress) - var(--size));
+    --fix-end: calc(var(--size) * var(--fix-end-multiplier));
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--unloaded);
+    background-image: conic-gradient(
+        from var(--fix-end),
+        var(--unloaded) var(--empty),
+        var(--stroke-color) var(--empty) var(--progress),
+        var(--unloaded) var(--progress) var(--empty)
+      ),
+      var(--fill);
+    will-change: background-image;
+    animation: dash 4s linear infinite;
+  }
+  
+  .color-all::after {
+    top: calc(50% - 12vh);
+    --empty: calc(var(--progress) - var(--size) + var(--fix-end));
+    background-image: conic-gradient(
+        var(--stroke-color) var(--empty),
+        var(--unloaded) var(--empty)
+      ),
+      var(--fill);
+    animation-name: dash-then-pause;
+  }
+  
+  .angle::after {
+    /* Magic numbers incoming! I just used something random */
+    background-image: conic-gradient(
+        from 0deg at 25% 75%,
+        var(--unloaded) var(--empty),
+        var(--stroke-color) var(--empty) var(--progress),
+        var(--unloaded) var(--progress)
+      ),
+      var(--fill);
+  }
+  
+  .vertical::after {
+    background-image: linear-gradient(
+        0deg,
+        var(--stroke-color) var(--linear-progress),
+        var(--unloaded) var(--linear-progress)
+      ),
+      var(--fill);
+  }
+  
+  /* And this is what --fill is for! You can use actual images too, but only as either the colored part or the background, not both. */
+  .gradient.complex::after {
+    --stroke-color: transparent;
+    --fill: radial-gradient(circle at center in hsl longer hue, red, blue);
+  }
+  
+  .gradient.simple::after {
+    --stroke-color: transparent;
+    --fill: linear-gradient(217deg, rgba(255, 0, 0, 1), rgba(255, 0, 0, 0) 70.71%),
+      linear-gradient(127deg, rgba(0, 255, 0, 1), rgba(0, 255, 0, 0) 70.71%),
+      linear-gradient(336deg, rgba(0, 0, 255, 1), rgba(0, 0, 255, 0) 70.71%);
+  }
+  
+  .complex::after {
+    --stroke-color: #f5a97f;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23f5a97f' stroke-linecap='round' stroke-linejoin='round' d='m4.54 10l6.92-4m-6.92 4a1.5 1.5 0 1 0-2.6 1.5a1.5 1.5 0 0 0 2.6-1.5M8 4v8m0-8a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M4.54 6l6.92 4M4.54 6a1.5 1.5 0 1 0-2.6-1.5A1.5 1.5 0 0 0 4.54 6M8 12a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m3.46-2a1.5 1.5 0 1 0 2.6 1.5a1.5 1.5 0 0 0-2.6-1.5m0-4a1.5 1.5 0 1 0 2.6-1.5a1.5 1.5 0 0 0-2.6 1.5'/%3E%3C/svg%3E");
+  }
+  
+  .simple::after {
+    --stroke-color: #8bd5ca;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%239b77fe' stroke-linecap='round' stroke-linejoin='round' d='M4.5 4.5H12c.83 0 1.5.67 1.5 1.5v6c0 .83-.67 1.5-1.5 1.5H2A1.5 1.5 0 0 1 .5 12V3.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1'/%3E%3C/svg%3E");
+  }
+  
+  @keyframes dash {
+    0% {
+      /* EDIT HERE! Progress must be the same value as --size. Trying to use var(--size) will only bring you pain. */
+      --progress: 60deg;
+      --linear-progress: 0%;
+    }
+    50% {
+      --progress: 180deg;
+      --linear-progress: 50%;
+    }
+    100% {
+      --progress: 360deg;
+      --linear-progress: 100%;
+      --fix-end-multiplier: 1;
+    }
+  }
+  
+  @keyframes dash-then-pause {
+    0% {
+      --progress: 60deg;
+    }
+    45% {
+      --progress: 180deg;
+    }
+    90%,
+    100% {
+      --progress: 360deg;
+      --fix-end-multiplier: 1;
+    }
+  }
+  
+  /* Nothing under this contributes to the spinners */
+  
+  body {
+    background-color: hsl(232, 23%, 18%);
+    color: hsl(227, 68%, 88%);
+    font-family: Poppins, Helvetica, Arial, sans-serif;
+  }
+  
+  a {
+    color: hsl(171, 47%, 69%);
+  }
+  
+  .main {
+    display: grid;
+  
+    grid-template-columns: repeat(5, 12vw);
+    grid-auto-rows: min-content;
+    grid-gap: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    justify-items: center;
+    transform: translate(-50%, -50%);
+  }
+  
+  .spinner {
+    height: 10vh;
+    width: 10vw;
+  }
+  
+  .spinner.complex {
+    grid-row: 4;
+    grid-column-start: auto;
+  }
+  
+  .spinner.simple {
+    grid-column: auto;
+  }
+  
+  .spinner::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .legend,
+  .credits {
+    grid-column: 1 / span 5;
+    text-align: center;
+  }
+  
+  .credits {
+    font-size: 0.9rem;
+    margin-top: 0;
+  }
+  
+  .highlight {
+    color: hsl(267, 83%, 80%);
+  }
+  
