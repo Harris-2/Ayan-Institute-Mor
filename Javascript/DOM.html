@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Bootstrap-Mor/bootstrap-5.3.3-dist/css/bootstrap.css">
+    <title>DOM Manipulation</title>
+</head>
+<body class="bg-dark text-light" id="body">
+    <h1 class="text-primary text-center">DOM Manipulation</h1>
+    <button type="button" class="btn btn-primary" onclick="bg()">Change bg</button>
+    <div class="text-center">
+        <h3>User Name based on input</h3>
+        <label for="name" class="fs-5 fw-bold mt-4">User Name</label>
+      <input type="text" id="inputName" placeholder="Enter your Name">
+      <button type="button" class="btn btn-primary" onclick="greet()">Click</button>
+      <p id="greeting" class="fs-5 fw-bold"></p>
+    </div>
+
+    <script>
+        function bg() {
+            const element = document.getElementById('body');
+            element.classList.remove ('bg-dark');
+            element.classList.add('bg-danger');
+        }
+        function greet(){
+            const name = document.getElementById('inputName').value;
+            document.getElementById('greeting').innerHTML = 'Hello ' + name;
+        }
+    </script>
+</body>
+</html>
