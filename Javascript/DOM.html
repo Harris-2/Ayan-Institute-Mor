@@ -18,10 +18,15 @@
     </div>
 
     <script>
+        const colors = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-warning', 'bg-danger', 'bg-inf0', 'bg-dark']
+
+        let currentColor = 0;
+
         function bg() {
             const element = document.getElementById('body');
-            element.classList.remove ('bg-dark');
-            element.classList.add('bg-danger');
+            element.classList.remove (colors[currentColor]);
+            currentColor = (currentColor + 1) % colors.length;
+            element.classList.add(colors[currentColor]);
         }
         function greet(){
             const name = document.getElementById('inputName').value;

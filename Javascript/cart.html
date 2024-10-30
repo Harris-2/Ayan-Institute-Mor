@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Bootstrap-Mor/bootstrap-5.3.3-dist/css/bootstrap.css">
     <title>Cart</title>
 </head>
 <body class="">
-    <h1>User Cart</h1>
-    <div>
+    <div class="text-center">
+        <h1>User Cart</h1>
         <input type="text" placeholder="Enter Product name" id="productName">
         <input type="text" placeholder="Enter Price" id="productPrice">
+        <p id="demo">Hello World</p>
+        <button onclick="line()">Line</button>
+
         <button onclick="addToCart()">Add to cart</button>
 
         <ul id="cartItems"></ul>
     </div>
 
     <script>
+        function line(){
+            const para = document.getElementById('demo');
+            para.classList.add('text-decoration-line-through');
+        }
         function additem(productName, productPrice){
             const cartList = document.getElementById('cartItems');
             const newItem = document.createElement('li');
-            newItem.textContent = `${productName} ' / ' Rs${productPrice}`
+            newItem.textContent = `${productName} / ${productPrice}`
             newItem.className = 'cartItems';
             cartList.appendChild(newItem)
         }
