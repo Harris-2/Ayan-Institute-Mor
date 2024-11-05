@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>To-do list</title>
+    <style>
+    li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: deepskyblue;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    }
+
+    li.completed {
+        text-decoration: line-through;
+        background-color: #d1ffd1;
+        color: black;
+    }
+
+    .remove {
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body class="bg-secondary">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="todo-container bg-white p-4 rounded shadow" style="width: 300px;">
+            <h1 class="text-center mb-4">My To-Do List</h1>
+            <div class="form-group">
+                <input type="text" id="todoInput" class="form-control mb-2" placeholder="Add a new task...">
+            </div>
+            <button class="btn btn-success btn-block mb-3" onclick="addTask()">Add Task</button>
+            <ul id="todoList" class="list-unstyled"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
